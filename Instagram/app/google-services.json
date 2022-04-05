@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "241153210572",
+    "project_id": "instagram-f0502",
+    "storage_bucket": "instagram-f0502.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241153210572:android:27e64b4eff481277bdaa69",
+        "android_client_info": {
+          "package_name": "com.cursoandroid.instagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241153210572-qockieda55s0j2i3f2pak0ldcfdskjjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cursoandroid.instagram",
+            "certificate_hash": "6438272e51901076bd55441fb425bc964c2286af"
+          }
+        },
+        {
+          "client_id": "241153210572-ivmgrjf3ik6jho6ctbr34rg49mro889e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmUtpCawXqZOj5zytwOCkvBDOio3K7ak4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241153210572-ivmgrjf3ik6jho6ctbr34rg49mro889e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
