@@ -13,7 +13,8 @@
             android:parentActivityName=".activity.MainActivity">
         </activity>
 
-        <activity android:name=".activity.CadastroActivity" />
+        <activity android:name=".activity.CadastroActivity"
+            android:theme="@style/AppThemeLogin.Instagram"/>
         <activity android:name=".activity.MainActivity" />
         <activity
             android:name=".activity.LoginActivity"
