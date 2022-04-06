@@ -1,5 +1,11 @@
 package com.cursoandroid.instagram.model;
 
+import com.cursoandroid.instagram.helper.ConfiguracaoFirebase;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Usuario {
 
     private String id;
@@ -9,6 +15,35 @@ public class Usuario {
     private String caminhoFoto;
 
     public Usuario() {
+    }
+
+    public void salvar(){
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference usuariosRef = firebaseRef.child("usuario").child( getId() );
+        usuariosRef.setValue( this );
+    }
+
+    public void atualizar(){
+
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference usuariosRef = firebaseRef
+                .child("usuarios")
+                .child(getId());
+        Map<String, Object> valoresUsuario = converterParaMap();
+        usuariosRef.updateChildren(valoresUsuario);
+
+    }
+
+    public Map<String, Object> converterParaMap (){
+
+        HashMap<String, Object> usuarioMap = new HashMap<>();
+        usuarioMap.put("email", getEmail());
+        usuarioMap.put("nome", getNome());
+        usuarioMap.put("id", getId());
+        usuarioMap.put("caminhoFoto", getCaminhoFoto());
+
+        return usuarioMap;
+
     }
 
     public String getId() {

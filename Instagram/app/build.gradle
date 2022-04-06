@@ -39,20 +39,26 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    //Dependencias do Firebase
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation platform('com.google.firebase:firebase-bom:29.2.1')
+    implementation "com.google.firebase:firebase-database"
+    implementation "com.google.firebase:firebase-storage"
+    implementation "com.google.firebase:firebase-auth"
+    //implementation 'com.firebaseui:firebase-ui-storage:4.1.0'
+    implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
 
-    //Dependências firebase
-    implementation 'com.google.firebase:firebase-core:11.8.0'
-    implementation 'com.google.firebase:firebase-database:11.8.0'
-    implementation 'com.google.firebase:firebase-storage:11.8.0'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
-
-    //Dependências bottom navigationEX
+//    Filtros
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'info.androidhive:imagefilters:1.0.7'
+//    Bottom Navegation
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
-
-    //Dependências Circle imageview
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.android.material:material:1.4.1'
+//  Circle image view
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 
 }
 
+apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cursoandroid.instagram.R;
 import com.cursoandroid.instagram.helper.ConfiguracaoFirebase;
+import com.cursoandroid.instagram.helper.UsuarioFirebase;
 import com.cursoandroid.instagram.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,31 +46,31 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String textoNome  = campoNome.getText().toString();
+                String textoNome = campoNome.getText().toString();
                 String textoEmail = campoEmail.getText().toString();
-                String textosenha = campoSenha.getText().toString();
+                String textoSenha = campoSenha.getText().toString();
 
-                if( !textoNome.isEmpty() ){
-                    if( !textoEmail.isEmpty() ){
-                        if( !textosenha.isEmpty() ){
+                if (!textoNome.isEmpty()) {
+                    if (!textoEmail.isEmpty()) {
+                        if (!textoSenha.isEmpty()) {
 
                             usuario = new Usuario();
-                            usuario.setNome( textoNome );
-                            usuario.setEmail( textoEmail );
-                            usuario.setSenha( textosenha );
-                            cadastrar( usuario );
+                            usuario.setNome(textoNome);
+                            usuario.setEmail(textoEmail);
+                            usuario.setSenha(textoSenha);
+                            cadastrar(usuario);
 
-                        }else{
+                        } else {
                             Toast.makeText(CadastroActivity.this,
                                     "Preencha a senha!",
                                     Toast.LENGTH_SHORT).show();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(CadastroActivity.this,
                                 "Preencha o email!",
                                 Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
                     Toast.makeText(CadastroActivity.this,
                             "Preencha o nome!",
                             Toast.LENGTH_SHORT).show();
@@ -82,7 +83,7 @@ public class CadastroActivity extends AppCompatActivity {
      * Método responsável por cadastrar usuário com e-mail e senha
      * e fazer validações ao fazer o cadastro
      */
-    public void cadastrar( Usuario usuario){
+    public void cadastrar(Usuario usuario){
 
         progressBar.setVisibility(View.VISIBLE);
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
@@ -97,13 +98,28 @@ public class CadastroActivity extends AppCompatActivity {
 
                         if( task.isSuccessful() ){
 
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(CadastroActivity.this,
-                                    "Cadastro com sucesso",
-                                    Toast.LENGTH_SHORT).show();
+                            try {
 
-                            startActivity( new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
+                                progressBar.setVisibility(View.GONE);
+
+                                //Salvar dados no firebase
+                                String idUsuario = task.getResult().getUser().getUid();
+                                usuario.setId( idUsuario );
+                                usuario.salvar();
+
+                                //Salvar dados no profile do Firebase
+                                UsuarioFirebase.atualizarNomeUsuario( usuario.getNome() );
+
+                                Toast.makeText(CadastroActivity.this,
+                                        "Cadastro com sucesso",
+                                        Toast.LENGTH_SHORT).show();
+
+                                startActivity( new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
 
                         }else {
 
@@ -137,7 +153,7 @@ public class CadastroActivity extends AppCompatActivity {
         campoNome       = findViewById(R.id.editCadastroNome);
         campoEmail      = findViewById(R.id.editCadastroEmail);
         campoSenha      = findViewById(R.id.editCadastroSenha);
-        botaoCadastrar  = findViewById(R.id.buttonCadastrar);
+        botaoCadastrar  = findViewById(R.id.buttonEntrar);
         progressBar     = findViewById(R.id.progressCadastro);
 
         campoNome.requestFocus();

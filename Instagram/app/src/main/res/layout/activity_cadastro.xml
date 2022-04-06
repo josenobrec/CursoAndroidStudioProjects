@@ -38,7 +38,7 @@
         android:padding="10dp"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCadastrar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEntrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCadastroEmail" />
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editCadastroNome" />
 
     <Button
-        android:id="@+id/buttonCadastrar"
+        android:id="@+id/buttonEntrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -107,6 +107,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCadastrar" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEntrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

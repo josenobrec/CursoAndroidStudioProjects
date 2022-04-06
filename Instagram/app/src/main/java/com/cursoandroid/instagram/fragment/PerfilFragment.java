@@ -16,8 +16,6 @@ import android.widget.TextView;
 import com.cursoandroid.instagram.R;
 import com.cursoandroid.instagram.activity.EditarPerfilActivity;
 
-import org.w3c.dom.Text;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -82,7 +80,7 @@ public class PerfilFragment extends Fragment {
         //Configurações dos Componentes
         gridViewPerfil = view.findViewById(R.id.gridViewPerfil);
         progressBar = view.findViewById(R.id.progressBarPerfil);
-        imagePerfil = view.findViewById(R.id.imagePerfil);
+        imagePerfil = view.findViewById(R.id.imageEditarPerfil);
         textPublicacoes = view.findViewById(R.id.textPublicacoes);
         textSeguidores = view.findViewById(R.id.textSeguidores);
         textSeguindo = view.findViewById(R.id.textSeguindo);
