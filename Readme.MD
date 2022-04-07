@@ -5,3 +5,6 @@ Aula 282 - Atualizando e recuperando foto de perfil
 
 Aula 283. Criando tela de pesquisa & utilizando SearchView
 
+Aula 284. Pesquisando Usuários
+
+Aula 285. Exibindo usuários no RecyclerView (Pesquisa)
