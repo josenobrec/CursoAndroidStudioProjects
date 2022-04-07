@@ -3,10 +3,13 @@ package com.cursoandroid.instagram.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.cursoandroid.instagram.R;
 
@@ -16,6 +19,10 @@ import com.cursoandroid.instagram.R;
  * create an instance of this fragment.
  */
 public class PesquisaFragment extends Fragment {
+
+    //Widget
+    private SearchView searchViewPesquisa;
+    private RecyclerView recyclerPesquisa;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +68,26 @@ public class PesquisaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pesquisa, container, false);
+        View view = inflater.inflate(R.layout.fragment_pesquisa, container, false);
+
+        searchViewPesquisa = view.findViewById(R.id.searchViewPesquisa);
+        recyclerPesquisa   = view.findViewById(R.id.recyclerPesquisa);
+
+        //Configura searchview
+        searchViewPesquisa.setQueryHint("Buscar usuários");
+        searchViewPesquisa.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Log.d("onQueryTextChange", "Texto Digitado: " + newText);
+                return true;
+            }
+        });
+
+        return view;
     }
 }
