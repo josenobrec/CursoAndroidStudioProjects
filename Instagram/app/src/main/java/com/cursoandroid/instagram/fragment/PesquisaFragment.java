@@ -4,15 +4,18 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.cursoandroid.instagram.R;
+import com.cursoandroid.instagram.adapter.AdapterPesquisa;
 import com.cursoandroid.instagram.helper.ConfiguracaoFirebase;
 import com.cursoandroid.instagram.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +40,7 @@ public class PesquisaFragment extends Fragment {
 
     private List<Usuario> listaUsuarios;
     private DatabaseReference usuariosRef;
+    private AdapterPesquisa adapterPesquisa;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -93,6 +97,15 @@ public class PesquisaFragment extends Fragment {
         usuariosRef = ConfiguracaoFirebase.getFirebase()
                 .child("usuarios");
 
+        //Configura RecyclerView
+        recyclerPesquisa.setHasFixedSize(true);
+        recyclerPesquisa.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Configurar Adapter
+        adapterPesquisa = new AdapterPesquisa(listaUsuarios, getActivity());
+        recyclerPesquisa.setAdapter(adapterPesquisa);
+
+
         //Configura searchview
         searchViewPesquisa.setQueryHint("Buscar usuários");
         searchViewPesquisa.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -128,14 +141,20 @@ public class PesquisaFragment extends Fragment {
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    //Limpar lista
+                    listaUsuarios.clear();
+
                     for (DataSnapshot ds : dataSnapshot.getChildren()){
 
                         listaUsuarios.add(ds.getValue(Usuario.class));
 
                     }
 
-                    int total = listaUsuarios.size();
-                    Log.i("totalUsuarios", "total: " + total);
+                    adapterPesquisa.notifyDataSetChanged();
+
+                   /* int total = listaUsuarios.size();
+                    Log.i("totalUsuarios", "total: " + total);*/
 
                 }
 
