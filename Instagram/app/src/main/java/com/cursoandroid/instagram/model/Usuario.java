@@ -3,10 +3,11 @@ package com.cursoandroid.instagram.model;
 import com.cursoandroid.instagram.helper.ConfiguracaoFirebase;
 import com.google.firebase.database.DatabaseReference;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String id;
     private String nome;

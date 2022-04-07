@@ -8,3 +8,5 @@ Aula 283. Criando tela de pesquisa & utilizando SearchView
 Aula 284. Pesquisando Usuários
 
 Aula 285. Exibindo usuários no RecyclerView (Pesquisa)
+
+Aula 286. Exibindo perfil de usuário pesquisado

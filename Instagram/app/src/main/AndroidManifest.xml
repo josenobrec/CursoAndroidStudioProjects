@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagram">
-        <activity android:name=".activity.EditarPerfilActivity"
-            android:parentActivityName=".activity.MainActivity">
-        </activity>
-
-        <activity android:name=".activity.CadastroActivity"
-            android:theme="@style/AppThemeLogin.Instagram"/>
+        <activity android:name=".activity.PerfilAmigoActivity"></activity>
+        <activity
+            android:name=".activity.EditarPerfilActivity"
+            android:parentActivityName=".activity.MainActivity"></activity>
+        <activity
+            android:name=".activity.CadastroActivity"
+            android:theme="@style/AppThemeLogin.Instagram" />
         <activity android:name=".activity.MainActivity" />
         <activity
             android:name=".activity.LoginActivity"
