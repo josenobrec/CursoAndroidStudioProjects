@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,11 +21,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PerfilAmigoActivity extends AppCompatActivity {
 
     private Usuario usuarioSelecionado;
+    private Usuario usuarioLogado;
     private Button buttonAcaoPerfil;
     private CircleImageView imagePerfil;
     private TextView textPublicacoes, textSeguidores, textSeguindo;
@@ -32,6 +36,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     private DatabaseReference firebaseRef;
     private DatabaseReference usuariosRef;
     private DatabaseReference usuarioAmigoRef;
+    private DatabaseReference usuarioLogadoRef;
     private DatabaseReference seguidoresRef;
     private ValueEventListener valueEventListenerPerfilAmigo;
 
@@ -74,11 +79,33 @@ public class PerfilAmigoActivity extends AppCompatActivity {
                 Glide.with(PerfilAmigoActivity.this)
                         .load(url)
                         .into(imagePerfil);
-
             }
         }
+    }
 
-        verificaSegueUsuarioAmigo();
+    private void recuperarDadosUsuarioLogado(){
+
+        usuarioLogadoRef = usuariosRef.child(idUsuarioLogado);
+        usuarioLogadoRef.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        //Recupera dados de usuário logado
+                        usuarioLogado = dataSnapshot.getValue(Usuario.class);
+
+                        /*Verifica se usuário já está seguido
+                        amigo selecionado
+                         */
+                        verificaSegueUsuarioAmigo();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                }
+        );
 
     }
 
@@ -117,13 +144,51 @@ public class PerfilAmigoActivity extends AppCompatActivity {
             buttonAcaoPerfil.setText("Seguindo");
         }else{
             buttonAcaoPerfil.setText("Seguir");
+
+            //Adiciona evento para seguir usuário
+            buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //salvar seguidor
+                    salvarSeguidor(usuarioLogado, usuarioSelecionado);
+                }
+            });
         }
+    }
+
+    private void salvarSeguidor(Usuario uLogado, Usuario uAmigo){
+    /*
+    *seguidores
+    * id_jamilton
+    *   id_seguindo
+    *       dados seguindo
+    * */
+
+        HashMap<String, Object> dadosAmigos = new HashMap<>();
+        dadosAmigos.put("nome ", uAmigo.getNome());
+        dadosAmigos.put("caminhoFoto ", uAmigo.getCaminhoFoto());
+        DatabaseReference seguidorRef = seguidoresRef
+                .child(uLogado.getId())
+                .child(uAmigo.getId());
+        seguidorRef.setValue(dadosAmigos);
+
+        //Alterar botão ação para seguindo
+        buttonAcaoPerfil.setText("Seguindo");
+        buttonAcaoPerfil.setOnClickListener(null);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        //Recuperar dados do amigo selecionado
         recuperarDadosPerfilAmigo();
+
+        //Recuperar dados usuário logado
+        recuperarDadosUsuarioLogado();
+
     }
 
     @Override
@@ -166,7 +231,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         textPublicacoes = findViewById(R.id.textPublicacoes);
         textSeguidores = findViewById(R.id.textSeguidores);
         textSeguindo = findViewById(R.id.textSeguindo);
-        buttonAcaoPerfil.setText("Seguir");
+        buttonAcaoPerfil.setText("Carregando");
     }
 
     @Override

@@ -14,3 +14,6 @@ Aula 286. Exibindo perfil de usuário pesquisado
 Aula 287. Exibindo dados de perfil do amigo (Postagens, Seguindo e Seguidores)
 
 Aula 288. Iniciando recurso de seguir usuário
+
+Aula 289. Salvando seguidor no Firebase
+
