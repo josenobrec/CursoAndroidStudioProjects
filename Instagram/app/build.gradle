@@ -49,15 +49,17 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
 
 
-//    Filtros
+    //Filtros
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'info.androidhive:imagefilters:1.0.7'
-//    Bottom Navegation
+    //Bottom NavegationEX
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation 'com.google.android.material:material:1.4.1'
-//  Circle image view
+    //Circle image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+    ///Dependências AndroidPhotoFilter
+    implementation 'info.androidhive:imagefilters:1.0.7'
 
 }
 

@@ -24,3 +24,5 @@ Aula 291. Escolhendo imagem para postagem
 Aula 292. Enviando imagem para aplicar filtros
 
 Aula 293. Criando interface de filtros
+
+Aula 294. Aplicando filtro nas imagens
