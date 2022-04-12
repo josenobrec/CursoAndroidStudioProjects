@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".activity.FiltroActivity">
 
-    <ImageView
-        android:id="@+id/imageFotoEscolhida"
+    <LinearLayout
+
+
         android:layout_width="match_parent"
-        android:layout_height="420dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/avatar" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
+
+        <ImageView
+            android:id="@+id/imageFotoEscolhida"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/avatar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textDescricaoFiltro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descrição" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFiltros"
+            android:layout_width="match_parent"
+            android:layout_height="110dp" />
+    </LinearLayout>
+</ScrollView>

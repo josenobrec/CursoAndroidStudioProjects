@@ -21,4 +21,6 @@ Aula 290. Atualizando contador de seguidor
 
 Aula 291. Escolhendo imagem para postagem 
 
-292. Enviando imagem para aplicar filtros
+Aula 292. Enviando imagem para aplicar filtros
+
+Aula 293. Criando interface de filtros
