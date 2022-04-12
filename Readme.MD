@@ -18,3 +18,5 @@ Aula 288. Iniciando recurso de seguir usuário
 Aula 289. Salvando seguidor no Firebase
 
 Aula 290. Atualizando contador de seguidor
+
+Aula 291. Escolhendo imagem para postagem 
