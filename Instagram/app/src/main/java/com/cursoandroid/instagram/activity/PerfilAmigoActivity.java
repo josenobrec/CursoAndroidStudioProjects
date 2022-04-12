@@ -177,6 +177,23 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         buttonAcaoPerfil.setText("Seguindo");
         buttonAcaoPerfil.setOnClickListener(null);
 
+        //Incrementar seguindo do usuário logado
+        int seguindo = uLogado.getSeguindo() + 1;
+        HashMap<String, Object> dadosSeguindo = new HashMap<>();
+        dadosSeguindo.put("seguindo", seguindo );
+        DatabaseReference usuarioSeguindo = usuariosRef
+                .child( uLogado.getId() );
+        usuarioSeguindo.updateChildren( dadosSeguindo );
+
+        //Incrementar seguidores do amigo
+        int seguidores = uAmigo.getSeguidores() + 1;
+        HashMap<String, Object> dadosSeguidores = new HashMap<>();
+        dadosSeguidores.put("seguidores", seguidores );
+        DatabaseReference usuarioSeguidores = usuariosRef
+                .child( uAmigo.getId() );
+        usuarioSeguidores.updateChildren( dadosSeguidores );
+
+
     }
 
     @Override
