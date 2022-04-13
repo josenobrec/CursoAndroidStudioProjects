@@ -28,3 +28,5 @@ Aula 293. Criando interface de filtros
 Aula 294. Aplicando filtro nas imagens
 
 Aula 295. Carregando lista de filtros - parte 1
+
+Aula 296. Carregando lista de filtros - parte 2
