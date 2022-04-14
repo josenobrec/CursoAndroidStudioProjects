@@ -9,6 +9,7 @@
     tools:context=".activity.PerfilAmigoActivity">
 
     <include layout="@layout/toolbar"/>
+
     <include layout="@layout/fragment_perfil"/>
 
 </LinearLayout>

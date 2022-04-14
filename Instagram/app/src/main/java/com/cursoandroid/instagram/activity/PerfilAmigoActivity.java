@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cursoandroid.instagram.R;
+import com.cursoandroid.instagram.adapter.AdapterGrid;
 import com.cursoandroid.instagram.helper.ConfiguracaoFirebase;
 import com.cursoandroid.instagram.helper.UsuarioFirebase;
 import com.cursoandroid.instagram.model.Postagem;
@@ -35,6 +37,8 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     private Button buttonAcaoPerfil;
     private CircleImageView imagePerfil;
     private TextView textPublicacoes, textSeguidores, textSeguindo;
+    private GridView gridViewPerfil;
+    private AdapterGrid adapterGrid;
 
     private DatabaseReference firebaseRef;
     private DatabaseReference usuariosRef;
@@ -112,6 +116,10 @@ public class PerfilAmigoActivity extends AppCompatActivity {
 
                 int qtdPostagem = urlFotos.size();
                 textPublicacoes.setText(String.valueOf(qtdPostagem));
+
+                //Configurar Adapter
+                adapterGrid = new AdapterGrid(getApplicationContext(), R.layout.grid_postagem, urlFotos);
+                gridViewPerfil.setAdapter(adapterGrid);
 
             }
 
@@ -284,6 +292,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
 
         //Inicializar componentes
         imagePerfil = findViewById(R.id.imagePerfil);
+        gridViewPerfil = findViewById(R.id.gridViewPerfil);
         buttonAcaoPerfil = findViewById(R.id.buttonAcaoPerfil);
         textPublicacoes = findViewById(R.id.textPublicacoes);
         textSeguidores = findViewById(R.id.textSeguidores);
