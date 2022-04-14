@@ -32,3 +32,5 @@ Aula 295. Carregando lista de filtros - parte 1
 Aula 296. Carregando lista de filtros - parte 2
 
 Aula 297. Salvando postagem
+
+Aula 298. Recuperando postagens
