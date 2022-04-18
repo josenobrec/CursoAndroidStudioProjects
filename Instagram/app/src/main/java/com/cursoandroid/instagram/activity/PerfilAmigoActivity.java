@@ -23,6 +23,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,8 +99,29 @@ public class PerfilAmigoActivity extends AppCompatActivity {
             }
         }
 
+        //Inicializar image loader
+        inicializarImageLoader();
+
         //Carrega as fotos das postagens de um usuário
         carregarFotosPostagem();
+
+    }
+
+    /**
+     * Instancia a UniversalImageLoader
+     */
+
+    public void inicializarImageLoader(){
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration
+                .Builder(this)
+                .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
+                .memoryCacheSize(2 * 1024 * 1024)
+                .diskCacheSize(50 * 1024 * 1024)
+                .diskCacheFileCount(100)
+                .diskCacheFileNameGenerator(new HashCodeFileNameGenerator())
+                .build();
+        ImageLoader.getInstance().init(config);
 
     }
 

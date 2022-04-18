@@ -52,14 +52,20 @@ dependencies {
     //Filtros
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'info.androidhive:imagefilters:1.0.7'
+
     //Bottom NavegationEX
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation 'com.google.android.material:material:1.4.1'
+
     //Circle image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
-    ///Dependências AndroidPhotoFilter
+    //Dependência AndroidPhotoFilter
     implementation 'info.androidhive:imagefilters:1.0.7'
+
+    //Dependência da lib Universal image loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
 
 }
 

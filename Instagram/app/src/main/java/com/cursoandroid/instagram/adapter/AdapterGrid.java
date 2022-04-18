@@ -1,6 +1,7 @@
 package com.cursoandroid.instagram.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.cursoandroid.instagram.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.List;
 
@@ -37,21 +41,47 @@ public class AdapterGrid extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        ViewHolder viewHolder;
-        //caso a view não esteja inflada, precisamos inflar
-        if(convertView != null){
+        final ViewHolder viewHolder;
+        //Caso a view não esteja inflada, precisamos inflar
+        if( convertView == null ){
 
             viewHolder = new ViewHolder();
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(layoutResource, parent, false);
-            viewHolder.imagem = convertView.findViewById(R.id.imageGridPerfil);
+            viewHolder.imagem = convertView.findViewById(R.id.imageGridPefil);
             viewHolder.progressBar = convertView.findViewById(R.id.progressGridPerfil);
 
-            convertView.setTag(viewHolder);
+            convertView.setTag( viewHolder );
 
-        }else{
+        }else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
+        //Recuperar dados da imagem
+        String urlImagem = getItem(position);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(urlImagem, viewHolder.imagem,
+                new ImageLoadingListener() {
+                    @Override
+                    public void onLoadingStarted(String imageUri, View view) {
+                        viewHolder.progressBar.setVisibility(view.GONE);
+                    }
+
+                    @Override
+                    public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                        viewHolder.progressBar.setVisibility(view.GONE);
+                    }
+
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                        viewHolder.progressBar.setVisibility(view.GONE);
+                    }
+
+                    @Override
+                    public void onLoadingCancelled(String imageUri, View view) {
+                        viewHolder.progressBar.setVisibility(view.GONE);
+                    }
+                });
 
         return convertView;
     }

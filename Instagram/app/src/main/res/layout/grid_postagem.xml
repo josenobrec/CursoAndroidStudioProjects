@@ -7,9 +7,13 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageGridPerfil"
-        android:layout_width="200dp"
+        android:id="@+id/imageGridPefil"
+        android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +26,12 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageGridPerfil"
-        app:layout_constraintEnd_toEndOf="@+id/imageGridPerfil"
-        app:layout_constraintStart_toStartOf="@+id/imageGridPerfil"
-        app:layout_constraintTop_toTopOf="@+id/imageGridPerfil" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageGridPefil"
+        app:layout_constraintEnd_toEndOf="@+id/imageGridPefil"
+        app:layout_constraintStart_toStartOf="@+id/imageGridPefil"
+        app:layout_constraintTop_toTopOf="@+id/imageGridPefil" />
 </androidx.constraintlayout.widget.ConstraintLayout>
