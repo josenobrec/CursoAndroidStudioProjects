@@ -144,9 +144,6 @@ public class PerfilAmigoActivity extends AppCompatActivity {
                     //Log.i("postagem", "url:" + postagem.getCaminhoFoto());
                 }
 
-                int qtdPostagem = urlFotos.size();
-                textPublicacoes.setText(String.valueOf(qtdPostagem));
-
                 //Configurar Adapter
                 adapterGrid = new AdapterGrid(getApplicationContext(), R.layout.grid_postagem, urlFotos);
                 gridViewPerfil.setAdapter(adapterGrid);
@@ -336,3 +333,6 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         return false;
     }
 }
+
+
+//Finalizado Subir Git
