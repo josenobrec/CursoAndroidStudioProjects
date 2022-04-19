@@ -46,3 +46,7 @@ Aula 302. Ajustando tela de perfil
 Aula 303. Atualizando quantidade de postagens
 
 Aula 304. Visualizar postagem
+
+Aula 305. Ajustando Carregamento
+
+Aula 306. Ajustando seguidores
