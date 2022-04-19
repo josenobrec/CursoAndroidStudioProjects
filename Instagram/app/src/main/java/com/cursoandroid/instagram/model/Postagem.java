@@ -3,9 +3,13 @@ package com.cursoandroid.instagram.model;
 import android.provider.ContactsContract;
 
 import com.cursoandroid.instagram.helper.ConfiguracaoFirebase;
+import com.cursoandroid.instagram.helper.UsuarioFirebase;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Postagem implements Serializable {
 
@@ -34,13 +38,18 @@ public class Postagem implements Serializable {
 
     }
 
-    public boolean salvar(){
+    public boolean salvar(DataSnapshot seguidoresSnapshot){
+
+
+        Map objeto = new HashMap<>();
+        Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
 
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference postagemRef = firebaseRef.child("postagens")
-                .child(getIdUsuario())
-                .child(getId());
-        postagemRef.setValue(this);
+
+        //Referência para postagem
+        firebaseRef.child("postagens").child(getIdUsuario())
+
+        //postagemRef.setValue(this);
         return true;
     }
 
