@@ -47,9 +47,34 @@ public class Postagem implements Serializable {
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
 
         //Referência para postagem
-        firebaseRef.child("postagens").child(getIdUsuario())
+        String combinacaoId = "/" + getIdUsuario() + "/" + getId();
+        objeto.put("/postagens" + combinacaoId, this);
 
-        //postagemRef.setValue(this);
+        //Referência para postagem
+        for (DataSnapshot seguidores: seguidoresSnapshot.getChildren()){
+
+            /*
+            +feed
+                +id_seguidor<jose renato>
+                    +id_postagem<01>
+                        postagem<por jamilton>
+             */
+            String idSeguidor = seguidores.getKey();
+
+            //Montar objeto para salvar
+            HashMap<String, Object> dadosSeguidor = new HashMap<>();
+            dadosSeguidor.put("fotoPostagem", getCaminhoFoto());
+            dadosSeguidor.put("descricao", getCaminhoFoto());
+            dadosSeguidor.put("id", getId());
+            dadosSeguidor.put("nomeUsuario", usuarioLogado.getNome());
+            dadosSeguidor.put("fotoUsuario", usuarioLogado.getCaminhoFoto());
+
+            String idsAtualizacao = "/" + getIdUsuario() + "/" + getId();
+            objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
+
+        }
+
+        firebaseRef.updateChildren(objeto);
         return true;
     }
 

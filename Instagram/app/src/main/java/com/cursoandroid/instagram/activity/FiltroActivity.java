@@ -272,7 +272,7 @@ public class FiltroActivity extends AppCompatActivity {
                             usuarioLogado.atualizarQtdPostagem();
 
                             //Salvar postagem
-                            if( postagem.salvar() ){
+                            if( postagem.salvar(seguidoresSnapshot) ){
 
                                 Toast.makeText(FiltroActivity.this,
                                         "Sucesso ao salvar a imagem",

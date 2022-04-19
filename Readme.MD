@@ -52,3 +52,5 @@ Aula 305. Ajustando Carregamento
 Aula 306. Ajustando seguidores
 
 Aula 307. Criando feed - parte 1
+
+Aula 308. Criando feed - parte 2
