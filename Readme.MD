@@ -44,3 +44,5 @@ Aula 301. Exibindo postagens no perfil do usuário - parte 3
 Aula 302. Ajustando tela de perfil
 
 Aula 303. Atualizando quantidade de postagens
+
+Aula 304. Visualizar postagem
