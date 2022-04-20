@@ -64,7 +64,7 @@ public class Postagem implements Serializable {
             //Montar objeto para salvar
             HashMap<String, Object> dadosSeguidor = new HashMap<>();
             dadosSeguidor.put("fotoPostagem", getCaminhoFoto());
-            dadosSeguidor.put("descricao", getCaminhoFoto());
+            dadosSeguidor.put("descricao", getDescricao());
             dadosSeguidor.put("id", getId());
             dadosSeguidor.put("nomeUsuario", usuarioLogado.getNome());
             dadosSeguidor.put("fotoUsuario", usuarioLogado.getCaminhoFoto());
