@@ -54,3 +54,5 @@ Aula 306. Ajustando seguidores
 Aula 307. Criando feed - parte 1
 
 Aula 308. Criando feed - parte 2
+
+Aula 309. Recuperando feed - parte 1
