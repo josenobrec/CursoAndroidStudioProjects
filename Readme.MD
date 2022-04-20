@@ -58,3 +58,5 @@ Aula 308. Criando feed - parte 2
 Aula 309. Recuperando feed - parte 1
 
 Aula 310. Recuperando feed - parte 2
+
+Aula 311. Curtindo postagem - parte 1
