@@ -87,7 +87,7 @@
             app:icon_type="heart" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageComentarioFeed"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="16dp"
