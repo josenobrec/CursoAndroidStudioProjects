@@ -14,15 +14,15 @@ import java.util.Map;
 public class Postagem implements Serializable {
 
     /*
-    * Modelo de postagem
-    * postagens
-    * <id_usuario>
-    *   <id_postagem_firebase>
-    *      descricao
-    *      caminhoFoto
-    *       idUsuario
-    *
-    *   */
+     * Modelo de postagem
+     * postagens
+     *  <id_usuario>
+     *      <id_postagem_firebase>
+     *          descricao
+     *          caminhoFoto
+     *          idUsuario
+     *
+     * */
 
     private String id;
     private String idUsuario;
@@ -38,10 +38,9 @@ public class Postagem implements Serializable {
 
     }
 
-    public boolean salvar(DataSnapshot seguidoresSnapshot){
+    public boolean salvar(DataSnapshot seguidoresSnapshot) {
 
-
-        Map objeto = new HashMap<>();
+        Map objeto = new HashMap();
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
 
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
@@ -51,17 +50,17 @@ public class Postagem implements Serializable {
         objeto.put("/postagens" + combinacaoId, this);
 
         //Referência para postagem
-        for (DataSnapshot seguidores: seguidoresSnapshot.getChildren()){
+        for (DataSnapshot seguidores : seguidoresSnapshot.getChildren()) {
 
             /*
-            +feed
-                +id_seguidor<jose renato>
-                    +id_postagem<01>
-                        postagem<por jamilton>
-             */
+            + feed
+              + id_seguidor<jose renato>
+                + id_postagem <01>
+                    postagem< por jamilton>
+           */
             String idSeguidor = seguidores.getKey();
 
-            //Montar objeto para salvar
+            //Monta objeto para salvar
             HashMap<String, Object> dadosSeguidor = new HashMap<>();
             dadosSeguidor.put("fotoPostagem", getCaminhoFoto());
             dadosSeguidor.put("descricao", getDescricao());
@@ -69,13 +68,14 @@ public class Postagem implements Serializable {
             dadosSeguidor.put("nomeUsuario", usuarioLogado.getNome());
             dadosSeguidor.put("fotoUsuario", usuarioLogado.getCaminhoFoto());
 
-            String idsAtualizacao = "/" + getIdUsuario() + "/" + getId();
+            String idsAtualizacao = "/" + idSeguidor + "/" + getId();
             objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
 
         }
 
         firebaseRef.updateChildren(objeto);
         return true;
+
     }
 
     public String getId() {
@@ -109,4 +109,6 @@ public class Postagem implements Serializable {
     public void setCaminhoFoto(String caminhoFoto) {
         this.caminhoFoto = caminhoFoto;
     }
+
 }
+
