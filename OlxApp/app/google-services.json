@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "15204029637",
+    "project_id": "olx-app-7dcce",
+    "storage_bucket": "olx-app-7dcce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15204029637:android:45351cedfff54b45370cac",
+        "android_client_info": {
+          "package_name": "com.cursoandroid.olxapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15204029637-j6co0hfb189j6c813v1ieslfo55536b2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cursoandroid.olxapp",
+            "certificate_hash": "6438272e51901076bd55441fb425bc964c2286af"
+          }
+        },
+        {
+          "client_id": "15204029637-dlra3ck9p2530fr91bih5shf0q1k3rto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7AVV_hzy1fA41-NOdSIyC5d8UofgELZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15204029637-dlra3ck9p2530fr91bih5shf0q1k3rto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
